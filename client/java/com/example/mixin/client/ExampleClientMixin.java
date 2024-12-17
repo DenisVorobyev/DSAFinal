@@ -12,10 +12,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.security.auth.callback.Callback;
 
+/**
+ * Code that is injected in the Minecraft Client
+ */
 @Mixin(ChatScreen.class)
 public class ExampleClientMixin {
+
+	/**
+	 * Intercepts any message sent by the user and checks it against the current quiz question
+	 * if there is a current quiz instance active
+	 * @param chatText the content of the message
+	 * @param addToHistory whether the message was added to chat history
+	 * @param ci the callback object used for cancelling the method
+	 */
 	@Inject(at = @At("HEAD"), method = "sendMessage", cancellable = true)
 	private void sendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
+		if (chatText.contains("Summoned")) {
+			ci.cancel();
+		}
+
 		if (Quiz.quizInstance != null) {
 			if (Quiz.quizInstance.getCurrQuestion().correct(chatText)) {
 				Quiz.quizInstance.correct();

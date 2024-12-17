@@ -3,6 +3,9 @@ package com.example;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a quiz question about adding numbers of the same base
+ */
 public class BaseAddition extends Question {
     private static final Map<Character, Integer> ctoi = Map.ofEntries(
             Map.entry('0', 0), Map.entry('1', 1), Map.entry('2', 2), Map.entry('3', 3),
@@ -22,7 +25,11 @@ public class BaseAddition extends Question {
     private String num2;
     private int base;
 
-
+    /**
+     * Creates a new base addition question with two numbers of specified digit length and base
+     * @param digits the amount of digits in each number
+     * @param base the base representation of each number
+     */
     public BaseAddition(int digits, int base) {
         super(digits);
         this.digits = digits;
@@ -31,6 +38,9 @@ public class BaseAddition extends Question {
         solveQ();
     }
 
+    /**
+     * Creates the question and documents the two randomly generated numbers
+     */
     public void makeQ() {
         StringBuilder num1 = new StringBuilder();
         StringBuilder num2 = new StringBuilder();
@@ -43,6 +53,9 @@ public class BaseAddition extends Question {
         super.setText(this.num1 + " + " + this.num2 + " (base " + base + ") =");
     }
 
+    /**
+     * Solves the question and documents the answer based on the generated numbers
+     */
     public void solveQ() {
         StringBuilder result = new StringBuilder();
         int carry = 0;

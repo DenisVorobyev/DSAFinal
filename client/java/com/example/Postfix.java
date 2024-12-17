@@ -1,15 +1,25 @@
 package com.example;
 import java.util.Stack;
 
+/**
+ * Represents a quiz question about postfix evaluation
+ */
 public class Postfix extends Question {
     private int operators;
 
+    /**
+     * Creates a new postfix question according to the amount of operators
+     * @param operators how many operators to include in the question
+     */
     public Postfix(int operators) {
         super(operators); //num operators as difficulty
         this.operators = operators;
         generateQ();
     }
 
+    /**
+     * Generates the postfix question and documents the solution
+     */
     public void generateQ() {
         String output = "";
         Stack<Integer> stack = new Stack<>();

@@ -10,7 +10,14 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+/**
+ * The entry point for the clientside mod
+ */
 public class ExampleModClient implements ClientModInitializer {
+
+	/**
+	 * Registers the quiz command which runs until the user answers incorrectly
+	 */
 	@Override
 	public void onInitializeClient() {
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
