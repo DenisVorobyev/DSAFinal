@@ -1,10 +1,10 @@
 package com.example;
 import java.util.Stack;
 
-public class Arithmetic extends Question {
+public class Postfix extends Question {
     private int operators;
 
-    public Arithmetic(int operators) {
+    public Postfix(int operators) {
         super(operators); //num operators as difficulty
         this.operators = operators;
         generateQ();
